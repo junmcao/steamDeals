@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    if games!=null
+        table
+            tr
+                th Title
+                th Original Price
+                th Sale Price
+                th Discount %
+                th Date and Time
+                th Link
+            
+            each game in games
+                tr 
+                    td
+                        a(class="button" href=game.link) #{game.title}
+                    td= game.original
+                    td= game.sale
+                    td= game.discount
+                    td= game.date + " " + game.time
+                    td
+                        a(class='button' href=game.link) Visit Steam 
+        
+    else
+        p There is no sale on that game! Sorry!

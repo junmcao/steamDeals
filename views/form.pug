@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    -data = data || {}
+    if errors
+        ul
+        for error in errors
+            li= error.msg
+
+    form(action="/register" method="POST")
+        label(for="username") Username:
+        input(
+            type="text"
+            id="uname"
+            placeholder="username"
+            name="uname"
+            value=data.uname
+        )
+
+        label(for="email") Email:
+        input(
+            type="email"
+            id="email"
+            placeholder="name@email.com"
+            name="email"
+            value=data.email
+        )
+
+        label(for="pw") Password:
+        input(
+            type="password"
+            id="password"
+            name="password"
+            value=data.password
+        )
+
+        label(for="pw2") Confirm Password:
+        input(
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            value=data.confirmPassword
+
+        )
+        input(type="submit" value="Submit")

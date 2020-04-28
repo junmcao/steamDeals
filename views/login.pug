@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    -data = data || {}
+    if errors
+        ul
+        for error in errors
+            li= error.msg
+
+    form(action="/login" method="POST")
+        label(for="username") Username:
+        input(
+            type="text"
+            id="uname"
+            placeholder="username"
+            name="uname"
+            value=data.uname
+        )
+
+        label(for="pw") Password:
+        input(
+            type="password"
+            id="password"
+            name="password"
+            value=data.password
+        )
+        input(type="submit" value="Submit")

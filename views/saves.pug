@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    if sesh.saves.length
+        a(href="/saves/removeAll") Remove All
+        p Hey #{sesh.user}, here are your saved deals!
+        table
+            tr
+                th Title
+                th Original Price
+                th Sale Price
+                th Discount %
+                th Date and Time
+                th Link
+                th Add to Saves
+            each game in savedGames
+                tr 
+                    td
+                        a(class="button" href=game[0].link) #{game[0].title}
+                    td= game[0].original
+                    td= game[0].sale
+                    td= game[0].discount
+                    td= game[0].date + " " + game[0].time
+                    td
+                        a(class='button' href=game[0].link) Visit Steam 
+                    td
+                        a(class="button" href="/remove?title=" + game[0].title) Remove
+    else
+        p Sorry #{sesh.user}, you don't have any saved deals!
+
