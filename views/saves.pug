@@ -16,13 +16,13 @@ block content
             each game in savedGames
                 tr 
                     td
-                        a(class="button" href=game[0].link) #{game[0].title}
+                        a(class="button" target="_blank" href=game[0].link) #{game[0].title}
                     td= game[0].original
-                    td= game[0].sale
+                    td= game[0].sale 
                     td= game[0].discount
                     td= game[0].date + " " + game[0].time
                     td
-                        a(class='button' href=game[0].link) Visit Steam 
+                        a(class='button' target="_blank" href=game[0].link) Visit Steam 
                     td
                         a(class="button" href="/remove?title=" + game[0].title) Remove
     else

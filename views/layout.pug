@@ -1,28 +1,32 @@
+// output: layout.html
 doctype html
 html
     head
-        title= title
-        link(rel='stylesheet', "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
-
+        title= Layout
+        link(rel='stylesheet', href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+        // Fontawesome CDN
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        // Custom styles
+        link(href='/styles/styles.css', rel='stylesheet')
     body
-        // Navigation Bar
-        nav#navbar.navbar.navbar-expand.lg.navbar-dark.bg-dark
+      // Navigation Bar
+      nav#navbar.navbar.navbar-expand.lg.navbar-dark.bg-dark
         span.navbar-brand
             h1#logo SD
         button.navbar-toggler(type='button' data-toggle='collapse' data-target='navbarAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aira-label='Toggle navigation')
             span.navbar-toggler-icon
         #navbarNavAltMarkup.collapse.navbar-collapse
             ul.navbar-nav.mr-auto
-            li.nav-item-active
-                a.nav-item.nav-link(href='./') Home
-            li.nav-item
-                a.nav-item.nav-link(href='./login') Log In
-            li.nav-item
-                a.nav-item.nav-link(href='./register') Register
-            li
-                a(href="/saves") Saves
-            li
-                a(href="/logout") Logout
+                li.nav-item-active
+                    a.nav-link(href='/') Home
+                li.nav-item
+                    a.nav-link(href='login') Login
+                li.nav-item
+                    a.nav-link(href='register') Register
+                li.nav-item
+                    a.nav-link(href='/saves') Saves
+                li.nav-item
+                    a.nav-link(href='/logout') Logout
         form(action="/search" method="GET")
             input(type='search' placeholder='Search Titles' aria-lable='Search' name="title")
             button.btn.btn-outline-success.my-2.my-sm-0(type='submit' value="submit") Search
@@ -32,3 +36,44 @@ html
     script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
     script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+
+//- doctype html
+//- html
+//-     head
+//-         // Bootstrap CSS
+//-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+//-         // Fontawesome CDN
+//-         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+//-         // Custom styles
+//-         <link rel="stylesheet" type="text/css" href="styles.css">
+
+//-     body
+//-         // Navigation Bar
+//-         nav#navbar.navbar.navbar-expand.lg.navbar-dark.bg-dark
+//-         span.navbar-brand
+//-             h1#logo SD
+//-         button.navbar-toggler(type='button' data-toggle='collapse' data-target='navbarAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aira-label='Toggle navigation')
+//-             span.navbar-toggler-icon
+//-         #navbarNavAltMarkup.collapse.navbar-collapse
+//-             ul.navbar-nav.mr-auto
+//-             li.nav-item-active
+//-                 a.nav-item.nav-link(href='./') Home
+//-             li.nav-item
+//-                 a.nav-item.nav-link(href='./login') Log In
+//-             li.nav-item
+//-                 a.nav-item.nav-link(href='./register') Register
+//-             li
+//-                 a(href="/saves") Saves
+//-             li
+//-                 a(href="/logout") Logout
+//-         form(action="/search" method="GET")
+//-             input(type='search' placeholder='Search Titles' aria-lable='Search' name="title")
+//-             button.btn.btn-outline-success.my-2.my-sm-0(type='submit' value="submit") Search
+        
+//-         block content
+    
+//-     script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+//-     script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+//-     script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')

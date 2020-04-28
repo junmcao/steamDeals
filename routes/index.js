@@ -212,6 +212,24 @@ router.get('/save?:title', checkLoggedIn, (req, res) =>{
         .catch(() => console.log("Failed"));
 
 });
+
+//remove all from saves
+router.get('/saves/removeAll', (req,res)=>{
+    req.session.saves = [];
+    console.log(req.session.saves);
+    req.session.save();
+
+    //save to mongodb
+    User.updateOne({"uname": req.session.user}, {$set: {"savedDeals": req.session.saves}})
+        .then(()=>{
+            console.log("Success!")
+            res.redirect('/saves');
+        })
+        .catch(()=>{
+            console.log("Failed");
+        });
+});
+
 //secret page with all registered users and their hashed passwords
 router.get('/registrations', (req, res) => {
     User.find()

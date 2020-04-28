@@ -1,4 +1,47 @@
 extends layout
+//- block content
+//-     -data = data || {}
+//-     if errors
+//-         ul
+//-         for error in errors
+//-             li= error.msg
+
+//-     form(action="/register" method="POST")
+//-         label(for="username") Username:
+//-         input(
+//-             type="text"
+//-             id="uname"
+//-             placeholder="username"
+//-             name="uname"
+//-             value=data.uname
+//-         )
+
+//-         label(for="email") Email:
+//-         input(
+//-             type="email"
+//-             id="email"
+//-             placeholder="name@email.com"
+//-             name="email"
+//-             value=data.email
+//-         )
+
+//-         label(for="pw") Password:
+//-         input(
+//-             type="password"
+//-             id="password"
+//-             name="password"
+//-             value=data.password
+//-         )
+
+//-         label(for="pw2") Confirm Password:
+//-         input(
+//-             type="password"
+//-             name="confirmPassword"
+//-             id="confirmPassword"
+//-             value=data.confirmPassword
+
+//-         )
+//-         input(type="submit" value="Submit")
 
 block content
     -data = data || {}
@@ -6,40 +49,36 @@ block content
         ul
         for error in errors
             li= error.msg
+    
 
-    form(action="/register" method="POST")
-        label(for="username") Username:
-        input(
-            type="text"
-            id="uname"
-            placeholder="username"
-            name="uname"
-            value=data.uname
-        )
-
-        label(for="email") Email:
-        input(
-            type="email"
-            id="email"
-            placeholder="name@email.com"
-            name="email"
-            value=data.email
-        )
-
-        label(for="pw") Password:
-        input(
-            type="password"
-            id="password"
-            name="password"
-            value=data.password
-        )
-
-        label(for="pw2") Confirm Password:
-        input(
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            value=data.confirmPassword
-
-        )
-        input(type="submit" value="Submit")
+    // Container for Form
+    .container
+      .d-flex.justify-content-center.h-100
+        .card2
+          .card-header
+            h3 Registration Form
+          // Input forms for Registration
+          .card-body
+            form(action="/register" method="POST")
+              .input-group.form-group
+                .input-group-prepend
+                  span.input-group-text
+                    i.fas.fa-user
+                input.form-control(type="text", id="uname", placeholder="username", name="uname", value=data.uname)
+              .input-group.form-group
+                .input-group-prepend
+                  span.input-group-text
+                    i.fas.fa-envelope
+                input.form-control(type="email", id="email", placeholder="name@email.com", name="email", value=data.email)
+              .input-group.form-group
+                .input-group-prepend
+                  span.input-group-text
+                    i.fas.fa-key
+                input.form-control(type="password", id="password", placeholder="password", name="password", value=data.password)
+              .input-group.form-group
+                .input-group-prepend
+                  span.input-group-text
+                    i.fas.fa-key
+                input.form-control(type="password", name="confirmPassword", id="confirmPassword", placeholder="confirm password", value=data.confirmPassword)
+              .form-group
+                input.btn.float-right.login_btn(type='submit', value='Submit')
