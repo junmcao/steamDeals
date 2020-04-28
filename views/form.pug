@@ -1,4 +1,4 @@
-extends layout
+include layout.pug
 //- block content
 //-     -data = data || {}
 //-     if errors
@@ -50,13 +50,11 @@ block content
         for error in errors
             li= error.msg
     
-
     // Container for Form
     .container
-      .d-flex.justify-content-center.h-100
-        .card2
-          .card-header
-            h3 Registration Form
+      .d-flex.justify-content-center.h-100.mt-3
+        .card
+          h5.card-header Register
           // Input forms for Registration
           .card-body
             form(action="/register" method="POST")
@@ -81,4 +79,4 @@ block content
                     i.fas.fa-key
                 input.form-control(type="password", name="confirmPassword", id="confirmPassword", placeholder="confirm password", value=data.confirmPassword)
               .form-group
-                input.btn.float-right.login_btn(type='submit', value='Submit')
+                input.btn.btn-primary.float-right.login_btn(type='submit', value='Submit')

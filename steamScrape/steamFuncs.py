@@ -104,8 +104,8 @@ def big_CAD(soup):
         original = (original.find(name="span")).get_text()
         curr = original[:3].strip()
         original = original[5:]
-        title = (a.find(name="span", attrs={"class":"title"}).get_text().strip()).lower()
-        title = valid_title(title)
+        title = (a.find(name="span", attrs={"class":"title"}).get_text().strip())
+        # title = valid_title(title)
         link = a["href"].strip()
         sale = (a.find(name="div", attrs={"class":"col search_price discounted responsive_secondrow"}))
         sale.span.clear()

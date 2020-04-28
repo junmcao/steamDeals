@@ -1,1 +1,1 @@
-mongoimport --uri="mongodb+srv://admin@steamdeals-rhxsv.mongodb.net/discounts?retryWrites=true&w=majority" --collection=games --type csv --headerline --file=steamDataCAD.csv --ignoreBlanks
+mongoimport --uri="mongodb+srv://admin@steamdeals-rhxsv.mongodb.net/discounts?retryWrites=true&w=majority" --collection=games --type csv --headerline --file=steamDataCAD.csv --ignoreBlanks --drop

@@ -1,4 +1,4 @@
-extends layout
+include layout.pug
 
 block content
     -data = data || {}
@@ -6,12 +6,10 @@ block content
         ul
         for error in errors
             li= error.msg
-    .div
     .container
-        .d-flex.justify-content-center.h-100
-            .card
-            .card-header
-                h3 Sign In
+        .d-flex.justify-content-center.h-100.mt-3
+        .card
+            h5.card-header Log In
             .card-body
                 form(action="/login" method="POST")
                     .input-group.form-group
@@ -25,7 +23,7 @@ block content
                             i.fas.fa-key
                         input.form-control(type='password', id="password", name="password", placeholder='password' value=data.password)
                     .input-group.form-group
-                        input.button.float-right(type='submit', value='Submit')
+                        input.btn.btn-primary.float-right.login_btn(type='submit', value='Submit')
 
 
 //- extends layout

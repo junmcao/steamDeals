@@ -1,29 +1,58 @@
-extends layout
+include layout.pug
 
 block content
-    games
-    if games.length
-        table
-            tr
-                th Title
-                th Original Price
-                th Sale Price
-                th Discount %
-                th Date and Time
-                th Link
-                th Add to Saves
+    .container-md
+        if games.length
+            table.table.mt-3
+                thead.thead-dark
+                    tr
+                        th(scope='col') Title
+                        th(scope='col') Sale Price
+                        th(scope='col') Original Price
+                        th(scope='col') Discount
+                        th(scope='col') Link to Steam
+                        th(scope='col') Save Deal
+                tbody
+                    each game in games
+                        tr
+                            th(scope='row')=game.title
+                            td="$" + game.sale
+                            td="$" + game.original
+                            td=game.discount + "%"
+                            td
+                                a.btn.btn-primary(target="_blank" href=game.link, role='button') Link
+                            td
+                                a.btn.btn-primary(role="button" href="/save?title=" + game.title) Save
+        else
+            h1.text-center.mt-3 No games on sale :(
+
+
+
+
+
+    //- games
+    //- if games.length
+    //-     table
+    //-         tr
+    //-             th Title
+    //-             th Original Price
+    //-             th Sale Price
+    //-             th Discount %
+    //-             th Date and Time
+    //-             th Link
+    //-             th Add to Saves
             
-            each game in games
-                tr 
-                    td
-                        a(class="button" href=game.link) #{game.title}
-                    td= game.original
-                    td= game.sale
-                    td= game.discount
-                    td= game.date + " " + game.time
-                    td
-                        a(class='button' href=game.link) Visit Steam 
-                    td
-                        a(class="button" href="/save?title=" + game.title) Save
-    else
-        p No games on sale :(
+    //-         each game in games
+    //-             tr 
+    //-                 td
+    //-                     a(class="button" href=game.link) #{game.title}
+    //-                 td= game.original
+    //-                 td= game.sale
+    //-                 td= game.discount
+    //-                 td= game.date + " " + game.time
+    //-                 td
+    //-                     a(class='button' href=game.link) Visit Steam 
+    //-                 td
+    //-                     a(class="button" href="/save?title=" + game.title) Save
+    //- else
+    //-     p No games on sale :(

@@ -1,30 +1,29 @@
-extends layout
+include layout.pug
 
 block content
-    if sesh.saves.length
-        a(href="/saves/removeAll") Remove All
-        p Hey #{sesh.user}, here are your saved deals!
-        table
-            tr
-                th Title
-                th Original Price
-                th Sale Price
-                th Discount %
-                th Date and Time
-                th Link
-                th Add to Saves
-            each game in savedGames
-                tr 
-                    td
-                        a(class="button" target="_blank" href=game[0].link) #{game[0].title}
-                    td= game[0].original
-                    td= game[0].sale 
-                    td= game[0].discount
-                    td= game[0].date + " " + game[0].time
-                    td
-                        a(class='button' target="_blank" href=game[0].link) Visit Steam 
-                    td
-                        a(class="button" href="/remove?title=" + game[0].title) Remove
-    else
-        p Sorry #{sesh.user}, you don't have any saved deals!
+    .container-md   
+        if sesh.saves.length
+            table.table.mt-3
+                thead.thead-dark
+                    tr
+                        th(scope='col') Title
+                        th(scope='col') Sale Price
+                        th(scope='col') Original Price
+                        th(scope='col') Discount
+                        th(scope='col') Link to Steam
+                        th(scope='col') Save Deal
+                tbody
+                    each game in savedGames
+                        tr
+                            th(scope='row')=game[0].title
+                            td="$"+ game[0].sale
+                            td="$"+ game[0].original 
+                            td=game[0].discount + "%"
+                            td
+                                a.btn.btn-primary(target="_blank" href=game[0].link) Link
+                            td
+                                a.btn.btn-primary(href="/remove?title=" + game[0].title) Remove 
+            a(href="/saves/removeAll") Remove All
+        else
+            h1.text-center.mt-3 #{sesh.user}, you don't have any saved deals!
 

@@ -4,6 +4,7 @@ const {check, validationResult} = require('express-validator');
 const router = express.Router();
 const path = require('path');
 const auth = require('http-auth');
+const axios = require('axios');
 const User = mongoose.model('user');
 const Game = mongoose.model('games');
 
