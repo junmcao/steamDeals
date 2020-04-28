@@ -38,7 +38,7 @@ router.get('/logout', (req,res) => {
     req.session.loggedIn= false;
     req.session.user=null;
     req.session.saves=null;
-    res.redirect("/");
+    res.redirect("/login");
 });
 
 
@@ -102,6 +102,8 @@ router.post('/register',
             newUser.password = newUser.generateHash(req.body.password);
             newUser.save()
                 .then(() => { 
+                    console.log("username: " + newUser.uname);
+                    console.log("password: " + newUser.password);
                     console.log("Registration completed");
                     res.redirect('/login');
                 })
@@ -127,24 +129,37 @@ router.get('/login', checkNotLoggedIn, (req,res) => {
 });
 
 //login
-router.post('/login', (req, res) => {
+router.post('/login', check('password').not().isEmpty(), (req, res) => {
     console.log(req.body.uname);
     console.log(req.body.password);
-    User.findOne({uname: req.body.uname}, (err, user) => {
-        console.log(user.password);
-        console.log(user.uname);
-        if (!user.validPassword(req.body.password)){
-            console.log("Password did not match");
-        }
-        else{
-            console.log("Successfully logged in!");
-            req.session.loggedIn = true;
-            req.session.user = user.uname;
-            req.session.saves = user.savedDeals;
-            console.log(req.session.saves);
-            res.redirect('../');
-        }
-    });
+    var matched = false;
+    const errors = validationResult(req);
+    if (errors.isEmpty()){
+        User.findOne({uname: req.body.uname}, (err, user) => {
+            console.log(user.password);
+            console.log(user.uname);
+    
+            if (!user.validPassword(req.body.password)){
+                console.log("Password did not match");
+            }
+            else{
+                console.log("Successfully logged in!");
+                req.session.loggedIn = true;
+                req.session.user = user.uname;
+                req.session.saves = user.savedDeals;
+                console.log(req.session.saves);
+                res.redirect('../');
+            }
+        });
+    }
+    else{
+        res.render('login', {
+            title: 'Login',
+            errors: errors.array(),
+            data: req.body,
+            passwordMatch: matched
+        })
+    }
 });
 
 
